@@ -1,0 +1,59 @@
+clc, clearvars
+% Define the initial position of the UAV
+x0 = input("initial x-axis position : ");
+y0 = input("initial y-axis position : ");
+z0 = input("initial z-axis position : ");
+
+% Define the initial direction of the antenna
+theta_i = input("Enter the azimuth of antenna :");
+phi_i = input("Enter the elevation of antenna :");
+
+output()
+
+function output ()
+    % Define the equation of motion at a time "t"
+    t = input("Enter the time taken : ");
+    x(t) = 3*t;
+    y(t) = 4^t;
+    z(t) = 5*tan(t);
+
+    % Define the velocity at a time "t"
+    Vx(t) = diff(x,t);
+    Vy(t) = diff(y,t);
+    Vz(t) = diff(z,t);
+
+    compute_antenna_direction (x, y, z)
+    adjust_antenna (theta_i, phi_i, theta_f, phi_f, t)
+
+
+   function compute_antenna_direction (x, y, z)
+	    % Setting polar coordinates of the UAV
+	    global phi_f
+	    global theta_f 
+          global r
+	    r = sqrt((x^2) + (y^2) + (z^2));
+	    phi_f = rad2deg (acos((sqrt(x^2) + (y^2))/r));
+	    theta_f = rad2deg (acos(x/(r * cos(phi))));
+    end
+
+    function adjust_antenna (theta_i, phi_i, theta_f, phi_f, t)
+	    %computing the azimuthal angle moved
+	    theta = theta_f - theta_i;
+	    phi = phi_f - phi_i;
+	    omega1 = theta/t;
+	    omega2 = phi/t;
+    end
+
+    % Start the tracking loop
+    for t = t0:dt:tf
+        % Calculate the UAV's position and velocity at time t
+        x = x0 + x;
+        y = y0 + y;
+        z = z0 + z;        
+        % Compute the antenna direction and orientation
+        compute_antenna_direction();
+    
+        % Adjust the antenna direction and orientation
+        adjust_antenna ();
+    end
+end 
