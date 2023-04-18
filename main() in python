@@ -29,6 +29,7 @@ Vx = sp.diff(x,t)
 Vy = sp.diff(y,t)
 Vz = sp.diff(z,t)
 
+# Define the functions for the respective equation of motion and velocities
 def X(t):
     x = 3*t
     return x
@@ -84,6 +85,7 @@ def OMEGA2 ():
 # Start the tracking of UAV
 T = tf-t0
 print("final co-ordinates of the UAV is : (", X(T), " , ", Y(T), " , ", Z(T), ")")
+print()
 print("final velocity of the UAV is : (", VX(T), " , ", VY(T), " , ", VZ(T), ")")
 
 # Tracking of the orientation of the antenna
