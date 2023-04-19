@@ -17,13 +17,13 @@ Similarly, I have set the initial orientation of the antenna ie phi, and theta f
 Now as my code starts, it shows the equation of motion of the UAV wrt time.
 
 x = 3t </br>
-y = 4t </br>
+y = 4t^2 </br>
 z = 5tan(t) </br>
 
 Differentiating the equations above we get equations for the velocities in the respective axes.
 
 Vx = 3 </br>
-Vy = 4 </br>
+Vy = 8t </br>
 Vz = 5(sec(t))^2 </br>
 
 Now to find the final orientation of the antenna, we compute the final theta and phi (theta_f and phi_f) by using the basics of polar coordinate geometry, and then adjusting the antenna's direction accordingly.
