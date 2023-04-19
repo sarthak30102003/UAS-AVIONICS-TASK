@@ -17,7 +17,7 @@ dt = input("step size : ");
 % Define the equation of motion wrt variable 't'
 t = linspace(t0, tf, dt);
 x = @(t) t.*3;
-y = @(t) t.*4;
+y = @(t) 4*(t.^2);
 z = @(t) 5*tan(t);
 X = x(t);
 Y = y(t);
