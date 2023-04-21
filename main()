@@ -22,7 +22,6 @@ z = @(t) 5*tan(t);
 X = x(t);
 Y = y(t);
 Z = z(t);
-disp(x(t))
 
 % Define the velocity at a time 't'
 Vx = diff(X)./diff(t);
