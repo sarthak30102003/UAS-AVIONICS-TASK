@@ -17,11 +17,12 @@ dt = input("step size : ");
 % Define the equation of motion wrt variable 't'
 t = linspace(t0, tf, dt);
 x = @(t) t.*3;
-y = @(t) 4*(t.^2);
+y = @(t) 4*t.^2;
 z = @(t) 5*tan(t);
 X = x(t);
 Y = y(t);
 Z = z(t);
+disp(x(t))
 
 % Define the velocity at a time 't'
 Vx = diff(X)./diff(t);
@@ -36,21 +37,21 @@ theta_f = acos(X./(r * cos(phi_f)));
 % Computing the azimuthal and altitudnal angle moved
 theta = theta_f(end) - theta_i;
 phi = phi_f(end) - phi_i;
-omega1 = theta/t;
-omega2 = phi/t;
+omega1 = theta./t;
+omega2 = phi./t;
 
 % Starting the tracking of UAV
 disp("final coordinates of the UAV is : ")
-disp("X coordinate : ", X(end)-x0)
-disp("Y coordinate : ", Y(end)-y0)
-disp("Z coordinate : ", Z(end)z0)
+fprintf('X coordinate : %d\n', X(end)-x0);
+fprintf("Y coordinate : %d\n", Y(end)-y0)
+fprintf("Z coordinate : %d\n", Z(end)-z0)
 disp("final velocity of the UAV is : ")
-disp("Velocity in X-direction : ", Vx(end))
-disp("Velocity in Y-direction : ", Vy(end))
-disp("Velocity in Z-direction : ", Vz(end))
+fprintf("Velocity in X-direction : %d\n", Vx(end))
+fprintf("Velocity in Y-direction : %d\n", Vy(end))
+fprintf("Velocity in Z-direction : %d\n", Vz(end))
 
 % Tracking of the orientation of the antenna
-disp("Final azimuthal angle of the antenna is : ", theta)
-disp("Angular velocity of the antenna in direction of azimuthal angle is : ", omega1)
-disp("Final altitudnal angle of the antenna is : ", phi)
-disp("Angular velocity of the antenna in the direction of altitudnal angle is : ", omega2)
+fprintf("Final azimuthal angle of the antenna is : %d\n", theta(end))
+fprintf("Angular velocity of the antenna in direction of azimuthal angle is : %d\n", omega1(end))
+fprintf("Final altitudnal angle of the antenna is : %d\n", phi(end))
+fprintf("Angular velocity of the antenna in the direction of altitudnal angle is : %d\n", omega2(end))
